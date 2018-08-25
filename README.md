@@ -15,7 +15,7 @@ the fold by putting the cursor on the fold and typing `za`.  The same key
 sequence will close the fold again.
 
 ## Decrypting
-You can decrypt the encrypted block with `<localleader>d` (localleader is '\'
+You can decrypt the encrypted block with `<localleader>d` (localleader is '\\'
 on my system). The decrypted value is placed onto the message tree and should
 appear on the vim command line. Should it have scrolled off, or not show
 you with the 'Press Enter to continue' message, you can view it with `:messages`.
