@@ -5,7 +5,7 @@
 "
 " A vim plugin to easily gpg decrypt/encrypt yaml values a la eyaml
 
-" nnoremap <localleader>j :call DecryptYaml()<cr>
+nnoremap <localleader>j :call DecryptEYaml()<cr>
 
 augroup eyamlgpg
     autocmd!
@@ -25,11 +25,26 @@ function s:FoldEYaml()
     endwhile
 endfunction
 
-" function DecryptYaml()
-"     if s:foldsfound
-"         echom "decrypting"
-"         execute "normal! za0f,lmzF[%v`z\"wy"
-"     else
-"         echom "no encrypted stuff found"
-"     endif
-" endfunction
+function DecryptEYaml()
+    if s:foldsfound
+        if getline('.') =~ "ENC[GPG,"
+            let cca = foldclosed(line('.'))
+            if cca == -1
+                :normal! za
+            endif
+            execute "normal! za0f,lmzF[%v`z\"zy"
+            :vsplit /tmp/ccajunk
+            execute "normal! \"zp"
+            execute "normal! Gf]x"
+            :%s/ //ge
+            :%!base64 -d |gpg --decrypt
+            execute "normal! G0\"xy$"
+            :quit!
+            echom "Decrypted Value: " . @x
+        else
+            echom "Not at the the start of an eyaml encrypted section"
+        endif
+    else
+        echom "no eyaml encrypted sections found."
+    endif
+endfunction
