@@ -44,21 +44,28 @@ function DecryptEYaml()
             " find the matching ']' and visually select
             " everything up to and including mark 'z'
             " yank this selection into the 'z' register
-            execute "normal! za0f,lmzF[%v`z\"zy"
+            silent! execute "normal! za0f,lmzF[%v`z\"zyza"
             " open a temporary window
-            :vsplit /tmp/ccajunk
+            " :vsplit /tmp/ccajunk
+            :vnew
+            setlocal bufhidden=hide
+            setlocal nobuflisted
+            setlocal buftype=nofile
+            setlocal nofoldenable
+            setlocal nonumber
+            setlocal noswapfile
             " paste the contents of the 'z' register
-            execute "normal! \"zp"
+            silent! execute "normal! \"zp"
             " go to the end of the block and find and delete the ']'
-            execute "normal! Gf]x"
+            silent! execute "normal! Gf]x"
             " remove any formatting spaces (if they exist)
-            :%s/ //ge
+            :silent! %s/ //ge
             " pass the text through base64 --decode and pipe
             " the output into gpg --decrypt
-            :%!base64 -d |gpg --decrypt
+            :silent! %!base64 -d |gpg --decrypt
             " grab the content of the last line (the decrypted value)
             execute "normal! G0\"xy$"
-            " close the file without writing it
+            " close the window without writing to disk
             :quit!
             " tell the user
             echom "Decrypted Value: " . @x
