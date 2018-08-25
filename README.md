@@ -21,4 +21,7 @@ appear on the vim command line. Should it have scrolled off, or not show
 you with the 'Press Enter to continue' message, you can view it with `:messages`.
 
 The decryption uses a tempory buffer, completely in memory, so nothing is
-written to disk.  It is destroyed immediately after decrypting.
+written to disk.  It is destroyed immediately after decrypting. The registers
+used to pass encrypted and decrypted strings around are reset to the values
+they had before decryption started, so there is no chance of the data being
+written out to any .viminfo files.

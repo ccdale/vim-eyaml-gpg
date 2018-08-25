@@ -31,6 +31,9 @@ function DecryptEYaml()
     if s:foldsfound
         " are we at the start of an encrypted block
         if getline('.') =~ "ENC[GPG,"
+            " store the z and x register contents
+            let l:ccaz = @z
+            let l:ccax = @x
             " is the fold open or closed
             let l:cca = foldclosed(line('.'))
             if l:cca == -1
@@ -44,10 +47,11 @@ function DecryptEYaml()
             " find the matching ']' and visually select
             " everything up to and including mark 'z'
             " yank this selection into the 'z' register
+            " close the fold
             silent! execute "normal! za0f,lmzF[%v`z\"zyza"
             " open a temporary window
-            " :vsplit /tmp/ccajunk
             :vnew
+            " ensure nothing is written to disk
             setlocal bufhidden=hide
             setlocal nobuflisted
             setlocal buftype=nofile
@@ -69,6 +73,9 @@ function DecryptEYaml()
             :quit!
             " tell the user
             echom "Decrypted Value: " . @x
+            " restore the z and x registers
+            let @x = l:ccax
+            let @z = l:ccaz
         else
             echom "Not at the the start of an eyaml encrypted section"
         endif
