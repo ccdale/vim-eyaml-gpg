@@ -25,3 +25,10 @@ written to disk.  It is destroyed immediately after decrypting. The registers
 used to pass encrypted and decrypted strings around are reset to the values
 they had before decryption started, so there is no chance of the data being
 written out to any .viminfo files.
+
+## versions
+Tested on ubuntu 16.04 and 18.04 with:
+GNU coreutils base64 8.25
+GNU coreutils base64 8.28
+GnuPG 1.4.20
+GnuPg 2.2.4
