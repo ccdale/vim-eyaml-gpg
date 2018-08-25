@@ -28,7 +28,7 @@ written out to any .viminfo files.
 
 ## versions
 Tested on ubuntu 16.04 and 18.04 with:
-GNU coreutils base64 8.25
-GNU coreutils base64 8.28
-GnuPG 1.4.20
-GnuPg 2.2.4
+* GNU coreutils base64 8.25
+* GNU coreutils base64 8.28
+* GnuPG 1.4.20
+* GnuPg 2.2.4
