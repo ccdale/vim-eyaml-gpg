@@ -3,7 +3,8 @@
 "
 " Licensed under the GPLv3
 "
-" A vim plugin to easily gpg decrypt/encrypt yaml values a la eyaml
+" A vim plugin to fold eyaml encrypted sections
+" allows viewing of the decrypted value if required
 
 nnoremap <localleader>d :call DecryptEYaml()<cr>
 
