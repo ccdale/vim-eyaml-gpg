@@ -18,7 +18,7 @@ sequence will close the fold again.
 You can decrypt the encrypted block with `<localleader>d` (localleader is '\\'
 on my system). The decrypted value is placed onto the message tree and should
 appear on the vim command line. Should it have scrolled off, or not show
-you with the 'Press Enter to continue' message, you can view it with `:messages`.
+you the 'Press Enter to continue' message, you can view it with `:messages`.
 
 The decryption uses a tempory buffer, completely in memory, so nothing is
 written to disk.  It is destroyed immediately after decrypting. The registers
