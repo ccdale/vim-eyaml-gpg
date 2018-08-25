@@ -5,7 +5,7 @@
 "
 " A vim plugin to easily gpg decrypt/encrypt yaml values a la eyaml
 
-nnoremap <localleader>j :call DecryptEYaml()<cr>
+nnoremap <localleader>d :call DecryptEYaml()<cr>
 
 augroup eyamlgpg
     autocmd!
