@@ -27,7 +27,15 @@ they had before decryption started, so there is no chance of the data being
 written out to any .viminfo files.
 
 ## versions
-Tested on ubuntu 16.04 with:
+
+Tested on:
+
+archlinux:
+* Vim 8.1 (1-279)
+* GNU coreutils base64 8.29
+* GnuPG 2.2.9
+
+ubuntu 16.04 with:
 * Vim 7.4 (1-1689 with extra patches 8.0.0056)
 * GNU coreutils base64 8.25
 * GnuPG 1.4.20
@@ -35,4 +43,4 @@ Tested on ubuntu 16.04 with:
 ubuntu 18.04 with:
 * Vim 8.0 (1-1453)
 * GNU coreutils base64 8.28
-* GnuPg 2.2.4
+* GnuPG 2.2.4
